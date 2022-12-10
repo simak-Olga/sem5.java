@@ -1,0 +1,67 @@
+импорт java.util.*;
+
+/*Реализуйте структуру телефонной книги с помощью HashMap, учитывая,
+что 1 человек может иметь несколько телефонов.*/
+публичный класс Task01_Sem5HW {
+    public static void main(String[] args) {
+ можно добавить описание к номеру, тогда значением будет HashMap, где ключ - описание, значение - номер
+ HashMap<String, ArrayList<String>> mapPhone = новый HashMap<>();
+ Сканер сканера = новый сканер (System.in);
+ int вход = 0; Имя строки = null, phone; ArrayList<String> arrPhone = null;
+        while (true) {
+            System.out.println("""
+                Введите:
+                1 - добавить контакт
+                2 - добавить ещё один телефон контакту
+                3 - вывести справочник
+                4 - показать телефоны контакта
+                5 - завершить работу""");
+
+            if (scanner.hasNextInt()) {
+ input = сканер.nextInt();
+            } else System.out.println("Некорректный ввод");
+
+ if (вход == 1) {
+                System.out.println("ФИО: ");
+                if (scanner.hasNext()) {
+ name = сканер.next();
+ System.out.println("номер телефона:");
+                }
+                if (scanner.hasNext()) {
+ телефон = сканер.next();
+ arrPhone = новый ArrayList<>(List.of(phone));
+ mapPhone.put(имя, arrPhone);
+                }
+            } else if (input == 2) {
+                System.out.println("Выберите/введите контакт, кому добавляем номер: \n" + mapPhone.keySet());
+                if (scanner.hasNext()){
+ name = сканер.next();
+ arrPhone = mapPhone.get(имя);}
+                if (arrPhone != null) {
+ System.out.println("номер телефона:");
+                    if(scanner.hasNext()){
+ arrPhone.add(сканер.next());
+ mapPhone.put(имя, arrPhone);}
+                } else System.out.println("Контакт не найден");
+            } else if (input == 3) {
+ for (Map.Entry<String, ArrayList<String>> запись : mapPhone.entrySet()) {
+                    System.out.println(entry.getKey() + ": " + entry.getValue());
+                }
+            } else if (input == 4) {
+                System.out.println("Выберите/введите контакт для поиска: \n" + mapPhone.keySet());
+                if (scanner.hasNext()) {
+ name = сканер.next();
+ arrPhone = mapPhone.get(имя); }
+                if (arrPhone != null) {
+ System.out.println(имя + ": " + arrPhone);
+                } else System.out.println("Контакт не найден");
+ } else, если (вход == 5) сломать;
+            else {
+ бросить новый исключение IllegalStateException("Неожиданное значение: " + input);
+            }
+        }
+ сканер.закрыть();
+
+
+    }
+}
